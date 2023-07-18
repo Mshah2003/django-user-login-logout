@@ -1,15 +1,15 @@
 <h1>Register Here</h1>
 
-
+<div class="container">
 {% for message in messages %}
-<h4>{{message}}</h4>
+{% if message.message == "User registered successfully!!" %}
+<h4 style="color: green;">{{message}} <a href="{% url 'login' %}">Login</a></h4>
+{% else %}
+<h4 style="color: red;">{{message}}</h4>
+{% endif %}
 {% endfor %}
+</div>
 
-<style>
-    h4{
-        color: red;
-    }
-</style>
 
 <form action="" method="POST">
     {% csrf_token %}
@@ -27,4 +27,4 @@
 
 
 <br><br><br>
-<h3>Already registered?     <a href="login">    login here</a></h3>
+<h3>Already registered?     <a href="login">     login here</a></h3>
